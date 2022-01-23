@@ -16,6 +16,8 @@ class PatternPickerSetting
         public string Match { get; set; } = string.Empty;
 
         public string[] NotMatch { get; set; } = new string[] { };
+
+        public string[] Noise { get; set; } = new string[] { };
     }
 
     public class OutputSetting{

@@ -51,11 +51,15 @@ class PatternPicker
                 {
                     continue;
                 }
+                    if(this.setting.RegEx.NotMatch.Any(x => Regex.IsMatch(lineContent, x))){
+                        continue;
+                    }
+
 
                 var matchWords = Regex.Matches(lineContent, setting.RegEx.Match);
                 foreach (var word in matchWords)
                 {
-                    if(this.setting.RegEx.NotMatch.Any(x => Regex.IsMatch(word.ToString(), x))){
+                    if(this.setting.RegEx.Noise.Any(x => Regex.IsMatch(word.ToString(), x))){
                         continue;
                     }
                     
