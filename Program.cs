@@ -29,9 +29,10 @@ namespace ChineseWordPicker
             var targetDirectoryInfo = new DirectoryInfo(targetFolder);
             Console.WriteLine(targetFolder);
 
+            
+
             var files = GetAllFiles(config, targetDirectoryInfo);
             PickChinese(config, files);
-
 
         }
 

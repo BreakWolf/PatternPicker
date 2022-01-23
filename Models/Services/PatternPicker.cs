@@ -72,12 +72,20 @@ class PatternPicker
     }
 
     public void Export(){
+        if(string.IsNullOrWhiteSpace(setting.Output.FileName)){
+            return;
+        }
+
         var outputContent = new StringBuilder();
+        if(setting.Output.WithHeader){
+            outputContent.AppendLine("FileName,LineNumber,Match,Origin");
+        }
+
         foreach(var match in this.matches){
             outputContent.AppendLine($"{match.FileName},{match.LineNumber},{match.Match},{match.Content}");
         }
         
-        File.WriteAllText(setting.OutputFile, outputContent.ToString());
+        File.WriteAllText(setting.Output.FileName, outputContent.ToString());
     }
 
 }
