@@ -17,6 +17,11 @@
 設定 RegEx 字串，用該字串做 regex 的檢查
 
 ### PatternPickerSetting:RegEx:NotMatch
+設定 RegEx 字串，用該字串做 regex 的檢查。
+
+優先於Match的檢查，符合該特徵的會優先排除。
+
+### PatternPickerSetting:RegEx:Noise
 
 設定 RegEx 字串，若用 RegEx:Match 查出來的東西又符合這個檢查，則會被排除
 
