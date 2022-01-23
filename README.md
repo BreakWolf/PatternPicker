@@ -6,7 +6,7 @@
 
 ## 使用情境
 
-1. 找出指定路徑下所有文字檔裡含有 *中文* 的檔案、行數和字串
+1. 找出指定路徑下所有文字檔裡含有 **中文** 的檔案、行數和字串
 
 ## [AppSettings](https://github.com/BreakWolf/PatternPicker/blob/master/appSettings.json)
 
