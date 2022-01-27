@@ -51,18 +51,20 @@ class PatternPicker
                 {
                     continue;
                 }
-                    if(this.setting.RegEx.NotMatch.Any(x => Regex.IsMatch(lineContent, x))){
-                        continue;
-                    }
 
+                if (this.setting.RegEx.NotMatch.Any(x => Regex.IsMatch(lineContent, x)))
+                {
+                    continue;
+                }
 
                 var matchWords = Regex.Matches(lineContent, setting.RegEx.Match);
                 foreach (var word in matchWords)
                 {
-                    if(this.setting.RegEx.Noise.Any(x => Regex.IsMatch(word.ToString(), x))){
+                    if (this.setting.RegEx.Noise.Any(x => Regex.IsMatch(word.ToString(), x)))
+                    {
                         continue;
                     }
-                    
+
                     matches.Add(new CSVModel
                     {
                         FileName = fileInfo.FullName,
@@ -75,20 +77,24 @@ class PatternPicker
         }
     }
 
-    public void Export(){
-        if(string.IsNullOrWhiteSpace(setting.Output.FileName)){
+    public void Export()
+    {
+        if (string.IsNullOrWhiteSpace(setting.Output.FileName))
+        {
             return;
         }
 
         var outputContent = new StringBuilder();
-        if(setting.Output.WithHeader){
-            outputContent.AppendLine("FileName,LineNumber,Match,Origin");
+        if (setting.Output.WithHeader)
+        {
+            outputContent.AppendLine($"FileName{setting.Output.Seperator}LineNumber{setting.Output.Seperator}Match{setting.Output.Seperator}Origin");
         }
 
-        foreach(var match in this.matches){
-            outputContent.AppendLine($"{match.FileName},{match.LineNumber},{match.Match},{match.Content}");
+        foreach (var match in this.matches)
+        {
+            outputContent.AppendLine($"{match.FileName}{setting.Output.Seperator}{match.LineNumber}{setting.Output.Seperator}{match.Match}{setting.Output.Seperator}{match.Content}");
         }
-        
+
         File.WriteAllText(setting.Output.FileName, outputContent.ToString());
     }
 

@@ -22,6 +22,9 @@ class PatternPickerSetting
 
     public class OutputSetting{
         public bool WithHeader  { get; set; } = false;
+
+        public string Seperator { get; set; } = ",";
+        
         public string  FileName { get; set; } = string.Empty;
 
     }
